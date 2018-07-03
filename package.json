@@ -1,0 +1,25 @@
+{
+    "name": "study_webpack",
+    "version": "1.0.0",
+    "description": "study_webpack",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "build": "webpack --mode development"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/sklee385/study_webpack.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/sklee385/study_webpack/issues"
+    },
+    "homepage": "https://github.com/sklee385/study_webpack#readme",
+    "devDependencies": {
+        "webpack": "^4.14.0",
+        "webpack-cli": "^3.0.8"
+    }
+}
