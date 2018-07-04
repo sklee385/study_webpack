@@ -4,5 +4,5 @@ study_webpack
 
 - es6
 - typescript 
-
-
+- css 및 기타 파일들 번들링
+- 코드 스플리팅
