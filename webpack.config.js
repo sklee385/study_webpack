@@ -1,9 +1,10 @@
 const path = require('path');
-const nodeExternals = require('webpack-node-externals')
+const nodeExternals = require('webpack-node-externals');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-
 const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+
 module.exports = {
     mode: 'development',        // production, development
     externals: [nodeExternals()],
@@ -40,6 +41,10 @@ module.exports = {
                     name: '[hash].[ext]',
                     limit: 10000,
                 },
+            },
+            {
+                test: /\.(woff|woff2|eot|ttf|otf)$/,
+                loader: 'file-loader'
             }
         ],
     },
@@ -50,12 +55,32 @@ module.exports = {
         }),
         new ExtractTextPlugin({
             filename: 'app.css',
-        })
+        }),
+        new HtmlWebpackPlugin()
+
     ],
+
+    optimization: {
+        splitChunks: {
+            cacheGroups: {
+                vendor: {
+                    chunks: 'initial',
+                    name: 'vendor',
+                    enforce: true,
+                }
+            }
+        }
+    },
+
+
     devServer: {
-        contentBase: path.join(__dirname, 'dist'),
+        host: '127.0.0.1',
+        contentBase: path.join(__dirname),
         compress: true,
-        port: 9000
+        hot: true,
+        inline: true,
+        port: 9000,
+        open: true
     }
 
 };
